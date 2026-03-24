@@ -1,6 +1,21 @@
-# Medinova Frontend - Documentation
+# Medinova - Documentation
+Application complète de gestion de cabinet médical avec backend Spring Boot et frontend React + TailwindCSS.
+## Structure du Projet
 
-Frontend React avec Vite et TailwindCSS pour le système de gestion de cabinet médical.
+```
+Medinovaapp/
+├── backend/          # Application Spring Boot (Java 17+)
+├── frontend/         # Application React + Vite + TailwindCSS
+└── README-root.md    # Ce fichier
+```
+### Backend
+- Java 17 ou supérieur
+- Maven 3.8+
+- MySQL 8.0+ (MySQL Workbench ou serveur MySQL sur port 3306)
+- MySQL doit être démarré et accessible
+
+### Frontend
+- Node.js 18+ et npm/yarn
 
 ## Technologies
 
