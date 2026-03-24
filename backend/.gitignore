@@ -1,0 +1,15 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.mvn/
+mvnw
+mvnw.cmd
+HELP.md
+logs/
+uploads/
+pdf-output/
+

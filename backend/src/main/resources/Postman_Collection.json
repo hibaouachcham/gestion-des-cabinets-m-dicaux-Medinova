@@ -1,0 +1,270 @@
+{
+  "info": {
+    "name": "Medinova API",
+    "description": "Collection Postman pour l'API Medinova",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"passwordAdmin\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "Get CSRF Token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/csrf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "csrf"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "Get Patients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/patients?page=0&size=10&search=",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients"],
+              "query": [
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "10"},
+                {"key": "search", "value": ""}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Patient by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/patients/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Patient",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cin\": \"AB999999\",\n  \"nom\": \"Test\",\n  \"prenom\": \"Patient\",\n  \"sexe\": \"M\",\n  \"telephone\": \"0612345678\",\n  \"email\": \"test@example.com\",\n  \"adresse\": \"123 Rue Test\",\n  \"ville\": \"Casablanca\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/patients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients"]
+            }
+          }
+        },
+        {
+          "name": "Enqueue Patient",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/patients/1/enqueue",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "patients", "1", "enqueue"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rendez-vous",
+      "item": [
+        {
+          "name": "Get Rendez-vous",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/rendezvous?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rendezvous"],
+              "query": [
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "10"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Rendez-vous",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": 1,\n  \"dateHeure\": \"2024-12-25T10:00:00\",\n  \"motif\": \"Consultation de suivi\",\n  \"statut\": \"PLANIFIE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/rendezvous",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rendezvous"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Consultations",
+      "item": [
+        {
+          "name": "Create Consultation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {"key": "patientId", "value": "1"},
+                {"key": "motif", "value": "Consultation générale"},
+                {"key": "diagnostic", "value": "Diagnostic"},
+                {"key": "prescription", "value": "Prescription"}
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/consultations",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "consultations"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Factures",
+      "item": [
+        {
+          "name": "Get Factures",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/factures?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "factures"],
+              "query": [
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "10"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Facture",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {"key": "patientId", "value": "1"},
+                {"key": "montantHT", "value": "500"},
+                {"key": "tauxTVA", "value": "0.20"}
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/factures",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "factures"]
+            }
+          }
+        },
+        {
+          "name": "Generate PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/factures/1/pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "factures", "1", "pdf"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Médicaments",
+      "item": [
+        {
+          "name": "Search Medicaments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/medicaments?q=para",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "medicaments"],
+              "query": [{"key": "q", "value": "para"}]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}
+
